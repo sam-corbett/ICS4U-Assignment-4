@@ -17,7 +17,7 @@ import { createPrompt } from 'bun-promptx'
  *
  * @param number - the number from userInput
  */
-function generatePattern(number: number): void {
+function generatePattern (number: number): void {
   for (let index = 1; index <= number; index++) {
     printPattern(number, index)
   }
@@ -29,18 +29,25 @@ function generatePattern(number: number): void {
  * @param number -  the number from userInput
  * @param currentRow - the current row processed
  */
-function printPattern(number: number, currentRow: number): void {
+function printPattern (number: number, currentRow: number): void {
   let line = ''
-  for (let index = 1; index <= number; index++) {
-    line += ' ' + index
-    if (index === currentRow) {
-        line += '\n'
-    }
+  for (let index = 1; index <= currentRow; index++) {
+    line += ` ${index}`
   }
 
-  // Print the reflected part of the pattern
-  for (let index = number - 1; index >= 1; index--) {
-    line += ' ' + index
+  for (let counterA = 1; counterA <= number; counterA++) {
+    for (let counterB = 1; counterB < counterA; counterB++) {
+      line += ` ${counterB}`
+    }
+    line += ` ${number}`
+
+    for (let counterB = number - 1; counterB >= 1; counterB--) {
+      line += ` ${counterB}`
+    }
+
+    if (counterA < number) {
+      line += '\n'
+    }
   }
 
   console.log(line)
@@ -54,7 +61,7 @@ if (userInputStr.value === null) {
 } else {
   const userInputInt = parseInt(userInputStr.value)
 
-  if (isNaN(userInputInt) || userInputInt > 1) {
+  if (isNaN(userInputInt) || userInputInt <= 1) {
     console.log('ERROR: Not a valid input')
   } else {
     // Call Function and print the pattern
