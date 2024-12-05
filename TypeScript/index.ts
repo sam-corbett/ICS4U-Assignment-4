@@ -17,15 +17,16 @@ import { createPrompt } from 'bun-promptx'
  *
  * @param numberParam - the number from userInput
  */
-function generatePattern (numberParam: number): void {
-  let pattern = ''
-  for (let index = 1; index <= numberParam; index++) {
-    pattern += ` ${index}`
-    for (let j = index - 1; j >= 1; j--) {
-      pattern += ` ${j}`
-    }
+function generatePattern (numberParam: number): string {
+  if (numberParam < 1) {
+    return ''
   }
-  console.log(pattern.trim())
+  const subPattern = generatePattern(numberParam - 1)
+  let currentPattern = ` ${numberParam}`
+  if (numberParam > 5) {
+    currentPattern += '\n'
+  }
+  return subPattern + currentPattern + subPattern
 }
 
 // Input
@@ -38,9 +39,11 @@ if (userInputStr.value === null) {
 
   if (isNaN(userInputInt) || userInputInt <= 0) {
     console.log('ERROR: Not a valid input')
+  } else if (userInputInt > 15) {
+    console.log('ERROR: Cannot provide a result for an input larger than 15.')
   } else {
     // Call Function and print the pattern
-    generatePattern(userInputInt)
+    console.log(generatePattern(userInputInt).trim())
   }
 }
 
