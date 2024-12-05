@@ -1,5 +1,5 @@
 /**
- * This program produces a numberic pattern
+ * This program produces a numeric pattern
  * symmetric about n where each half before and after
  * n is also symmetric around n-1.
  *
@@ -20,23 +20,26 @@ import { createPrompt } from 'bun-promptx'
 function generatePattern (numberParam: number): void {
   for (let index = 1; index <= numberParam; index++) {
     printPattern(index)
-    console.log('\n')
+    if (index !== numberParam) {
+      console.log('\n')
+    }
   }
 }
 
 /**
  * This function prints a row with the pattern
  *
- * @param numberParam -  the number from userInput
+ * @param numberParam - the number from userInput
  */
 function printPattern (numberParam: number): void {
   let line = ''
 
-  for (let outerCount = 1; outerCount <= numberParam; outerCount++) {
-    line += ` ${outerCount}`
-
-    for (let innerCount = outerCount - 1; innerCount >= 1; innerCount--) {
-      line += ` ${innerCount}`
+  for (let i = 1; i <= numberParam; i++) {
+    for (let j = 1; j <= i; j++) {
+      line += ` ${j}`
+    }
+    for (let j = i - 1; j >= 1; j--) {
+      line += ` ${j}`
     }
   }
 
