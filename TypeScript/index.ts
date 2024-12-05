@@ -18,32 +18,14 @@ import { createPrompt } from 'bun-promptx'
  * @param numberParam - the number from userInput
  */
 function generatePattern (numberParam: number): void {
+  let pattern = ''
   for (let index = 1; index <= numberParam; index++) {
-    printPattern(index)
-    if (index !== numberParam) {
-      console.log('\n')
+    pattern += ` ${index}`
+    for (let j = index - 1; j >= 1; j--) {
+      pattern += ` ${j}`
     }
   }
-}
-
-/**
- * This function prints a row with the pattern
- *
- * @param numberParam - the number from userInput
- */
-function printPattern (numberParam: number): void {
-  let line = ''
-
-  for (let i = 1; i <= numberParam; i++) {
-    for (let j = 1; j <= i; j++) {
-      line += ` ${j}`
-    }
-    for (let j = i - 1; j >= 1; j--) {
-      line += ` ${j}`
-    }
-  }
-
-  console.log(line.trim())
+  console.log(pattern.trim())
 }
 
 // Input
