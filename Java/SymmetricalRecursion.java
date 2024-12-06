@@ -11,7 +11,7 @@ import java.util.Scanner;
  * Version: 1.0
  * Since:   2024/12/04
  */
-public class SymmetricalRecursion {
+public final class SymmetricalRecursion {
     /**
      * Prevent instantiation.
      * Throw an exception IllegalStateException if this ever is called.
@@ -40,7 +40,12 @@ public class SymmetricalRecursion {
         return subPattern + currentPattern + subPattern;
     }
 
-    public static void main(String[] args) {
+    /**
+     * The main method.
+     *
+     * @param args - the command line arguements.
+     */
+    public static void main(final String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a positive integer: ");
         String userInputStr = scanner.nextLine();
@@ -61,6 +66,7 @@ public class SymmetricalRecursion {
                 System.out.println("ERROR: Not a valid input");
             }
         }
+        scanner.close();
         System.out.println("\nDone.");
     }
 }
