@@ -56,8 +56,9 @@ public final class SymmetricalRecursion {
             try {
                 int userInputInt = Integer.parseInt(userInputStr);
 
-                if (userInputInt <= 0) {
-                    System.out.println("ERROR: Not a valid input");
+                if (userInputInt <= 0 || userInputInt > 15) {
+                    System.out.println("ERROR: Input can't be less than"
+                                    + " 1 or greater than 15");
                 } else {
                     // Call Function and print the pattern
                     System.out.println(generatePattern(userInputInt).trim());
