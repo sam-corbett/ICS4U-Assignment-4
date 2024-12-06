@@ -12,14 +12,23 @@ import java.util.Scanner;
  * Since:   2024/12/04
  */
 public class SymmetricalRecursion {
+    /**
+     * Prevent instantiation.
+     * Throw an exception IllegalStateException if this ever is called.
+     *
+     * @throws IllegalStateException if instantiation is attempted.
+     */
+    private SymmetricalRecursion() {
+        throw new IllegalStateException("Cannot be instantiated");
+    }
 
     /**
-     * This function generates the pattern recursively from a given number
+     * This function generates the pattern recursively from a given number.
      *
-     * @param numberParam - the number from userInput
-     * @return the generated pattern
+     * @param numberParam - the number from userInput.
+     * @return the generated pattern.
      */
-    public static String generatePattern(int numberParam) {
+    public static String generatePattern(final int numberParam) {
         if (numberParam < 1) {
             return "";
         }
